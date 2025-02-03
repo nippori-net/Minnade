@@ -6,5 +6,26 @@
   </head>
   <body>
     <h1>みんなで話し合おう！</h1>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdS2LxWptLmg02Dgq29yTLSj2sU4RQaEsD9-k_IMxYa02wSAw/viewform" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
+<p><input name="entry.734176583" placeholder="名前" value="名無し" required></p>
+<p><textarea name="entry.351846892" placeholder="コメント" rows="10" cols="40" maxlength="400" id="wcheck" required></textarea></p>
+<input type="submit" id="submitbutton" value="送信">
+</form>
+<iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
+
+<script type="text/javascript">
+var NGComments = ["死ね","バカ",".exe"]; // 簡易的なNGワードの設定
+var regex = new RegExp(NGComments.join("|"));
+function test(wcheck) {
+	if (wcheck.match(regex) != null) {
+		alert("ERROR: コメントにNGワードが含まれています");
+		return false;
+	}
+	document.getElementById("submitbutton").disabled = true;
+	textareas = document.getElementsByTagName('textarea');
+	inputs = document.getElementsByTagName('input');
+	return submitted=!0;
+}
+</script>
   </body>
 </html>
